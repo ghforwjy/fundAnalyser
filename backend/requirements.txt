@@ -1,0 +1,11 @@
+fastapi==0.115.0
+uvicorn==0.32.0
+pydantic==2.9.2
+numpy==1.26.4
+pandas==2.2.3
+akshare==1.18.25
+tushare==1.4.24
+python-multipart==0.0.22
+volcengine-python-sdk[ark]
+python-dotenv==1.0.0
+httpx==0.28.1

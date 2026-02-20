@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基金分析平台 - 界面设计预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0ea5e9;
+        }
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+            gap: 30px;
+        }
+        .design-card {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .design-card h2 {
+            padding: 15px 20px;
+            background: #0f172a;
+            border-bottom: 1px solid #334155;
+            font-size: 18px;
+        }
+        .preview-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 62.5%;
+            background: #0f172a;
+            overflow: hidden;
+        }
+        .preview-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(0.5);
+            transform-origin: top left;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            width: 1440px;
+            height: 900px;
+            background: #0f172a;
+            display: flex;
+        }
+        .sidebar {
+            width: 240px;
+            height: 100%;
+            background: #1e293b;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 40px;
+        }
+        .nav-item {
+            padding: 12px 16px;
+            margin: 4px 0;
+            border-radius: 8px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .nav-item.active {
+            background: #334155;
+            border-left: 2px solid #0ea5e9;
+            color: #0ea5e9;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            height: 64px;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+        .page-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .refresh-btn {
+            padding: 10px 20px;
+            background: #334155;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+        }
+        .stat-title {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .stat-change {
+            font-size: 12px;
+        }
+        .stat-change.green { color: #10b981; }
+        .stat-change.purple { color: #a855f7; }
+        .stat-change.orange { color: #f59e0b; }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .chart-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+            height: 300px;
+        }
+        .chart-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .chart-area {
+            background: #0f172a;
+            border-radius: 8px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pie-chart {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #0ea5e9 0deg 126deg,
+                #ef4444 126deg 216deg,
+                #10b981 216deg 288deg,
+                #f59e0b 288deg 342deg,
+                #8b5cf6 342deg 360deg
+            );
+        }
+        .info-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+            margin-bottom: 16px;
+        }
+        .info-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .status-line {
+            background: #0f172a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .status-line.green { color: #10b981; }
+        .status-line.blue { color: #0ea5e9; }
+        .quick-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .action-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .action-btn.primary {
+            background: #0ea5e9;
+            color: white;
+        }
+        .action-btn.secondary {
+            background: #334155;
+        }
+
+        /* Portfolio Styles */
+        .portfolio-header {
+            display: flex;
+            gap: 12px;
+        }
+        .advice-btn {
+            padding: 10px 20px;
+            background: #8b5cf6;
+            border-radius: 6px;
+            font-size: 14px;
+            color: white;
+        }
+        .import-btn {
+            padding: 10px 20px;
+            background: #334155;
+            border: 1px dashed #0ea5e9;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .group-selector {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .group-label {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .group-dropdown {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 10px 16px;
+            min-width: 200px;
+        }
+        .new-group-btn {
+            padding: 10px 20px;
+            background: #0ea5e9;
+            border-radius: 6px;
+            font-size: 14px;
+            color: white;
+        }
+        .tab-bar {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 8px;
+        }
+        .tab {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .tab.active {
+            background: #0ea5e9;
+            color: white;
+        }
+        .tab.inactive {
+            color: #94a3b8;
+        }
+        .summary-card {
+            display: flex;
+            gap: 40px;
+        }
+        .summary-item {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .summary-label {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .summary-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .summary-value.green { color: #10b981; }
+        .table-container {
+            overflow-x: auto;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            background: #0f172a;
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+        .data-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #334155;
+            font-size: 14px;
+        }
+        .data-table tr:nth-child(even) {
+            background: #0f172a;
+        }
+        .data-table tr:nth-child(odd) {
+            background: #1e293b;
+        }
+        .code-cell {
+            font-family: monospace;
+        }
+        .profit-positive {
+            color: #10b981;
+        }
+        .profit-negative {
+            color: #ef4444;
+        }
+
+        /* Dialog Styles */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .dialog {
+            background: #1e293b;
+            border-radius: 12px;
+            width: 800px;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+        .dialog-header {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+        .dialog-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .dialog-close {
+            width: 30px;
+            height: 30px;
+            background: #334155;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .dialog-body {
+            padding: 24px;
+        }
+        .upload-area {
+            border: 2px dashed #334155;
+            border-radius: 12px;
+            padding: 80px;
+            text-align: center;
+            background: #0f172a;
+        }
+        .upload-hint1 {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+        .upload-hint2 {
+            font-size: 14px;
+            color: #64748b;
+        }
+        .dialog-footer {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-top: 1px solid #334155;
+        }
+        .dialog-btn {
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .dialog-btn.cancel {
+            background: #334155;
+        }
+        .dialog-btn.confirm {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .section-title {
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0ea5e9;
+            color: #0ea5e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 基金分析平台 - 界面设计预览</h1>
+        
+        <h2 class="section-title">📊 仪表盘页面 (Dashboard)</h2>
+        <div class="design-grid">
+            <div class="design-card">
+                <div class="preview-frame">
+                    <div class="preview-content">
+                        <div class="dashboard">
+                            <div class="sidebar">
+                                <div class="logo">FundDB</div>
+                                <div class="nav-item active">仪表盘</div>
+                                <div class="nav-item">基金分析</div>
+                                <div class="nav-item">投资组合</div>
+                                <div class="nav-item">数据管理</div>
+                                <div class="nav-item">系统设置</div>
+                            </div>
+                            <div class="main-content">
+                                <div class="header">
+                                    <div class="page-title">数据概览</div>
+                                    <div class="refresh-btn">刷新</div>
+                                </div>
+                                <div class="content">
+                                    <div class="stats-grid">
+                                        <div class="stat-card">
+                                            <div class="stat-title">基金总数</div>
+                                            <div class="stat-value">12,345</div>
+                                            <div class="stat-change green">来自fundData skill</div>
+                                        </div>
+                                        <div class="stat-card">
+                                            <div class="stat-title">净值记录</div>
+                                            <div class="stat-value">890万</div>
+                                            <div class="stat-change green">覆盖12,345只基金</div>
+                                        </div>
+                                        <div class="stat-card">
+                                            <div class="stat-title">数据表</div>
+                                            <div class="stat-value">25</div>
+                                            <div class="stat-change purple">fundData数据库</div>
+                                        </div>
+                                        <div class="stat-card">
+                                            <div class="stat-title">投资组合</div>
+                                            <div class="stat-value">5</div>
+                                            <div class="stat-change orange">32只基金</div>
+                                        </div>
+                                    </div>
+                                    <div class="charts-grid">
+                                        <div class="chart-card">
+                                            <div class="chart-title">数据增长趋势</div>
+                                            <div class="chart-area">
+                                                <svg width="480" height="180" viewBox="0 0 480 180">
+                                                    <polyline points="0,150 50,120 100,130 150,100 200,110 250,80 300,90 350,60 400,70 450,40 480,50" 
+                                                        fill="none" stroke="#0ea5e9" stroke-width="2"/>
+                                                    <polygon points="0,180 0,150 50,120 100,130 150,100 200,110 250,80 300,90 350,60 400,70 450,40 480,50 480,180" 
+                                                        fill="url(#gradient)" opacity="0.3"/>
+                                                    <defs>
+                                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                            <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.5"/>
+                                                            <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="chart-card">
+                                            <div class="chart-title">基金类型分布</div>
+                                            <div class="chart-area">
+                                                <div class="pie-chart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-title">数据源状态</div>
+                                        <div class="status-line green">✓ fundData skill 本地SQLite数据库 - 已连接</div>
+                                        <div class="status-line blue">✓ 股票持仓数据 - 15,678条记录</div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-title">快速操作</div>
+                                        <div class="quick-actions">
+                                            <div class="action-btn primary">基金列表</div>
+                                            <div class="action-btn secondary">投资组合</div>
+                                            <div class="action-btn secondary">数据表</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💼 投资组合页面 (Portfolio)</h2>
+        <div class="design-grid">
+            <div class="design-card">
+                <div class="preview-frame">
+                    <div class="preview-content">
+                        <div class="dashboard">
+                            <div class="sidebar">
+                                <div class="logo">FundDB</div>
+                                <div class="nav-item">仪表盘</div>
+                                <div class="nav-item">基金分析</div>
+                                <div class="nav-item active">投资组合</div>
+                                <div class="nav-item">数据管理</div>
+                                <div class="nav-item">系统设置</div>
+                            </div>
+                            <div class="main-content">
+                                <div class="header">
+                                    <div class="page-title">投资组合</div>
+                                    <div class="portfolio-header">
+                                        <div class="advice-btn">投资建议</div>
+                                        <div class="import-btn">图片导入</div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="group-selector">
+                                        <span class="group-label">选择组合:</span>
+                                        <div class="group-dropdown">我的持仓 (5只基金)</div>
+                                        <div class="new-group-btn">新建组合</div>
+                                    </div>
+                                    <div class="tab-bar">
+                                        <div class="tab active">持仓管理</div>
+                                        <div class="tab inactive">交易记录</div>
+                                    </div>
+                                    <div class="info-card summary-card">
+                                        <div class="summary-item">
+                                            <span class="summary-label">总市值:</span>
+                                            <span class="summary-value">¥100,000.00</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="summary-label">总收益:</span>
+                                            <span class="summary-value green">¥5,000.00 (+5.0%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-card">
+                                        <div class="info-title">持仓明细</div>
+                                        <div class="table-container">
+                                            <table class="data-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>基金代码</th>
+                                                        <th>基金名称</th>
+                                                        <th>持有份额</th>
+                                                        <th>成本价</th>
+                                                        <th>最新净值</th>
+                                                        <th>市值</th>
+                                                        <th>收益</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="code-cell">000001</td>
+                                                        <td>华夏成长混合</td>
+                                                        <td class="code-cell">1,000.00</td>
+                                                        <td class="code-cell">1.2000</td>
+                                                        <td class="code-cell">1.2300</td>
+                                                        <td class="code-cell">¥1,230.00</td>
+                                                        <td class="profit-positive">+¥30.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="code-cell">000002</td>
+                                                        <td>易方达蓝筹</td>
+                                                        <td class="code-cell">500.00</td>
+                                                        <td class="code-cell">2.5000</td>
+                                                        <td class="code-cell">2.4500</td>
+                                                        <td class="code-cell">¥1,225.00</td>
+                                                        <td class="profit-negative">-¥25.00</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📤 图片导入弹窗 (Image Import Dialog)</h2>
+        <div class="design-grid">
+            <div class="design-card">
+                <div style="padding: 40px; background: #0f172a;">
+                    <div class="dialog" style="margin: 0 auto;">
+                        <div class="dialog-header">
+                            <div class="dialog-title">从图片导入基金</div>
+                            <div class="dialog-close">X</div>
+                        </div>
+                        <div class="dialog-body">
+                            <div class="upload-area">
+                                <div class="upload-hint1">点击或拖拽上传图片</div>
+                                <div class="upload-hint2">支持基金持仓截图，系统将自动识别基金代码和份额</div>
+                            </div>
+                        </div>
+                        <div class="dialog-footer">
+                            <div class="dialog-btn cancel">取消</div>
+                            <div class="dialog-btn confirm">导入(2)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📁 设计文件</h2>
+        <div class="info-card">
+            <p><strong>Pencil 设计文件位置:</strong></p>
+            <ul style="margin: 16px 0; padding-left: 24px; line-height: 2;">
+                <li><code>designs/fund_dashboard.pen</code> - 仪表盘页面设计</li>
+                <li><code>designs/fund_portfolio.pen</code> - 投资组合页面设计</li>
+                <li><code>designs/preview.html</code> - 本预览文件</li>
+            </ul>
+            <p style="margin-top: 16px; color: #94a3b8;">
+                在 Trae IDE 中安装 Pencil 插件后，可以直接打开 .pen 文件进行编辑和预览。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,829 @@
+{
+  "version": "1.0",
+  "name": "基金分析平台 - 投资组合",
+  "pages": [
+    {
+      "name": "Portfolio",
+      "width": 1440,
+      "height": 900,
+      "background": "#0f172a",
+      "children": [
+        {
+          "type": "FRAME",
+          "name": "Sidebar",
+          "x": 0,
+          "y": 0,
+          "width": 240,
+          "height": 900,
+          "fills": [{"type": "SOLID", "color": "#1e293b"}],
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "Logo",
+              "x": 20,
+              "y": 20,
+              "width": 200,
+              "height": 40,
+              "characters": "FundDB",
+              "fontSize": 24,
+              "fontWeight": "BOLD",
+              "fills": [{"type": "SOLID", "color": "#0ea5e9"}]
+            },
+            {
+              "type": "TEXT",
+              "name": "Nav-仪表盘",
+              "x": 50,
+              "y": 92,
+              "width": 100,
+              "height": 20,
+              "characters": "仪表盘",
+              "fontSize": 14,
+              "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+            },
+            {
+              "type": "TEXT",
+              "name": "Nav-基金分析",
+              "x": 50,
+              "y": 144,
+              "width": 100,
+              "height": 20,
+              "characters": "基金分析",
+              "fontSize": 14,
+              "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "NavItem-Active",
+              "x": 10,
+              "y": 180,
+              "width": 220,
+              "height": 44,
+              "cornerRadius": 8,
+              "fills": [{"type": "SOLID", "color": "#334155"}],
+              "stroke": {"type": "SOLID", "color": "#0ea5e9", "weight": 2}
+            },
+            {
+              "type": "TEXT",
+              "name": "Nav-投资组合",
+              "x": 50,
+              "y": 192,
+              "width": 100,
+              "height": 20,
+              "characters": "投资组合",
+              "fontSize": 14,
+              "fills": [{"type": "SOLID", "color": "#0ea5e9"}]
+            },
+            {
+              "type": "TEXT",
+              "name": "Nav-数据管理",
+              "x": 50,
+              "y": 232,
+              "width": 100,
+              "height": 20,
+              "characters": "数据管理",
+              "fontSize": 14,
+              "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+            },
+            {
+              "type": "TEXT",
+              "name": "Nav-系统设置",
+              "x": 50,
+              "y": 276,
+              "width": 100,
+              "height": 20,
+              "characters": "系统设置",
+              "fontSize": 14,
+              "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+            }
+          ]
+        },
+        {
+          "type": "FRAME",
+          "name": "Header",
+          "x": 240,
+          "y": 0,
+          "width": 1200,
+          "height": 64,
+          "fills": [{"type": "SOLID", "color": "#1e293b"}],
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "PageTitle",
+              "x": 24,
+              "y": 20,
+              "width": 200,
+              "height": 24,
+              "characters": "投资组合",
+              "fontSize": 20,
+              "fontWeight": "BOLD",
+              "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "AdviceButton",
+              "x": 850,
+              "y": 12,
+              "width": 100,
+              "height": 40,
+              "cornerRadius": 6,
+              "fills": [{"type": "SOLID", "color": "#8b5cf6"}],
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "AdviceText",
+                  "x": 15,
+                  "y": 12,
+                  "width": 70,
+                  "height": 16,
+                  "characters": "投资建议",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#ffffff"}]
+                }
+              ]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "ImportButton",
+              "x": 960,
+              "y": 12,
+              "width": 120,
+              "height": 40,
+              "cornerRadius": 6,
+              "fills": [{"type": "SOLID", "color": "#334155"}],
+              "stroke": {"type": "SOLID", "color": "#0ea5e9", "weight": 1, "dash": [4, 4]},
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "ImportText",
+                  "x": 15,
+                  "y": 12,
+                  "width": 90,
+                  "height": 16,
+                  "characters": "图片导入",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "FRAME",
+          "name": "MainContent",
+          "x": 240,
+          "y": 64,
+          "width": 1200,
+          "height": 836,
+          "fills": [{"type": "SOLID", "color": "#0f172a"}],
+          "children": [
+            {
+              "type": "FRAME",
+              "name": "GroupSelector",
+              "x": 24,
+              "y": 24,
+              "width": 1140,
+              "height": 60,
+              "fills": [{"type": "SOLID", "color": "#1e293b"}],
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "GroupLabel",
+                  "x": 20,
+                  "y": 20,
+                  "width": 80,
+                  "height": 20,
+                  "characters": "选择组合:",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                },
+                {
+                  "type": "RECTANGLE",
+                  "name": "GroupDropdown",
+                  "x": 110,
+                  "y": 12,
+                  "width": 200,
+                  "height": 36,
+                  "cornerRadius": 6,
+                  "fills": [{"type": "SOLID", "color": "#0f172a"}],
+                  "stroke": {"type": "SOLID", "color": "#334155", "weight": 1},
+                  "children": [
+                    {
+                      "type": "TEXT",
+                      "name": "GroupName",
+                      "x": 12,
+                      "y": 10,
+                      "width": 150,
+                      "height": 16,
+                      "characters": "我的持仓 (5只基金)",
+                      "fontSize": 14,
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    }
+                  ]
+                },
+                {
+                  "type": "RECTANGLE",
+                  "name": "NewGroupBtn",
+                  "x": 330,
+                  "y": 12,
+                  "width": 100,
+                  "height": 36,
+                  "cornerRadius": 6,
+                  "fills": [{"type": "SOLID", "color": "#0ea5e9"}],
+                  "children": [
+                    {
+                      "type": "TEXT",
+                      "name": "NewGroupText",
+                      "x": 15,
+                      "y": 10,
+                      "width": 70,
+                      "height": 16,
+                      "characters": "新建组合",
+                      "fontSize": 14,
+                      "fills": [{"type": "SOLID", "color": "#ffffff"}]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "FRAME",
+              "name": "TabBar",
+              "x": 24,
+              "y": 100,
+              "width": 1140,
+              "height": 44,
+              "fills": [{"type": "SOLID", "color": "#1e293b"}],
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "RECTANGLE",
+                  "name": "TabActive",
+                  "x": 8,
+                  "y": 8,
+                  "width": 100,
+                  "height": 28,
+                  "cornerRadius": 6,
+                  "fills": [{"type": "SOLID", "color": "#0ea5e9"}],
+                  "children": [
+                    {
+                      "type": "TEXT",
+                      "name": "TabActiveText",
+                      "x": 20,
+                      "y": 6,
+                      "width": 60,
+                      "height": 16,
+                      "characters": "持仓管理",
+                      "fontSize": 14,
+                      "fills": [{"type": "SOLID", "color": "#ffffff"}]
+                    }
+                  ]
+                },
+                {
+                  "type": "TEXT",
+                  "name": "TabInactive",
+                  "x": 130,
+                  "y": 14,
+                  "width": 80,
+                  "height": 16,
+                  "characters": "交易记录",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                }
+              ]
+            },
+            {
+              "type": "FRAME",
+              "name": "SummaryCard",
+              "x": 24,
+              "y": 160,
+              "width": 1140,
+              "height": 100,
+              "cornerRadius": 12,
+              "fills": [{"type": "SOLID", "color": "#1e293b"}],
+              "stroke": {"type": "SOLID", "color": "#334155", "weight": 1},
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "SummaryTitle",
+                  "x": 20,
+                  "y": 20,
+                  "width": 200,
+                  "height": 20,
+                  "characters": "持仓概览",
+                  "fontSize": 16,
+                  "fontWeight": "BOLD",
+                  "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                },
+                {
+                  "type": "TEXT",
+                  "name": "TotalValueLabel",
+                  "x": 20,
+                  "y": 55,
+                  "width": 80,
+                  "height": 16,
+                  "characters": "总市值:",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                },
+                {
+                  "type": "TEXT",
+                  "name": "TotalValue",
+                  "x": 90,
+                  "y": 50,
+                  "width": 150,
+                  "height": 28,
+                  "characters": "¥100,000.00",
+                  "fontSize": 24,
+                  "fontWeight": "BOLD",
+                  "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                },
+                {
+                  "type": "TEXT",
+                  "name": "TotalProfitLabel",
+                  "x": 300,
+                  "y": 55,
+                  "width": 80,
+                  "height": 16,
+                  "characters": "总收益:",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                },
+                {
+                  "type": "TEXT",
+                  "name": "TotalProfit",
+                  "x": 370,
+                  "y": 50,
+                  "width": 150,
+                  "height": 28,
+                  "characters": "¥5,000.00 (+5.0%)",
+                  "fontSize": 24,
+                  "fontWeight": "BOLD",
+                  "fills": [{"type": "SOLID", "color": "#10b981"}]
+                }
+              ]
+            },
+            {
+              "type": "FRAME",
+              "name": "HoldingsTable",
+              "x": 24,
+              "y": 280,
+              "width": 1140,
+              "height": 520,
+              "cornerRadius": 12,
+              "fills": [{"type": "SOLID", "color": "#1e293b"}],
+              "stroke": {"type": "SOLID", "color": "#334155", "weight": 1},
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "TableTitle",
+                  "x": 20,
+                  "y": 20,
+                  "width": 200,
+                  "height": 20,
+                  "characters": "持仓明细",
+                  "fontSize": 16,
+                  "fontWeight": "BOLD",
+                  "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                },
+                {
+                  "type": "RECTANGLE",
+                  "name": "TableHeader",
+                  "x": 20,
+                  "y": 55,
+                  "width": 1100,
+                  "height": 44,
+                  "fills": [{"type": "SOLID", "color": "#0f172a"}],
+                  "children": [
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Code",
+                      "x": 20,
+                      "y": 14,
+                      "width": 80,
+                      "height": 16,
+                      "characters": "基金代码",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Name",
+                      "x": 120,
+                      "y": 14,
+                      "width": 150,
+                      "height": 16,
+                      "characters": "基金名称",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Shares",
+                      "x": 300,
+                      "y": 14,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "持有份额",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Cost",
+                      "x": 420,
+                      "y": 14,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "成本价",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-NAV",
+                      "x": 540,
+                      "y": 14,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "最新净值",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Market",
+                      "x": 660,
+                      "y": 14,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "市值",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Profit",
+                      "x": 780,
+                      "y": 14,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "收益",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Col-Action",
+                      "x": 900,
+                      "y": 14,
+                      "width": 80,
+                      "height": 16,
+                      "characters": "操作",
+                      "fontSize": 14,
+                      "fontWeight": "BOLD",
+                      "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                    }
+                  ]
+                },
+                {
+                  "type": "RECTANGLE",
+                  "name": "Row1",
+                  "x": 20,
+                  "y": 105,
+                  "width": 1100,
+                  "height": 50,
+                  "fills": [{"type": "SOLID", "color": "#1e293b"}],
+                  "children": [
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-Code",
+                      "x": 20,
+                      "y": 17,
+                      "width": 80,
+                      "height": 16,
+                      "characters": "000001",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-Name",
+                      "x": 120,
+                      "y": 17,
+                      "width": 150,
+                      "height": 16,
+                      "characters": "华夏成长混合",
+                      "fontSize": 14,
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-Shares",
+                      "x": 300,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "1,000.00",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-Cost",
+                      "x": 420,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "1.2000",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-NAV",
+                      "x": 540,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "1.2300",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-Market",
+                      "x": 660,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "¥1,230.00",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row1-Profit",
+                      "x": 780,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "+¥30.00",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#10b981"}]
+                    }
+                  ]
+                },
+                {
+                  "type": "RECTANGLE",
+                  "name": "Row2",
+                  "x": 20,
+                  "y": 160,
+                  "width": 1100,
+                  "height": 50,
+                  "fills": [{"type": "SOLID", "color": "#0f172a"}],
+                  "children": [
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-Code",
+                      "x": 20,
+                      "y": 17,
+                      "width": 80,
+                      "height": 16,
+                      "characters": "000002",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-Name",
+                      "x": 120,
+                      "y": 17,
+                      "width": 150,
+                      "height": 16,
+                      "characters": "易方达蓝筹",
+                      "fontSize": 14,
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-Shares",
+                      "x": 300,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "500.00",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-Cost",
+                      "x": 420,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "2.5000",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-NAV",
+                      "x": 540,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "2.4500",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-Market",
+                      "x": 660,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "¥1,225.00",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                    },
+                    {
+                      "type": "TEXT",
+                      "name": "Row2-Profit",
+                      "x": 780,
+                      "y": 17,
+                      "width": 100,
+                      "height": 16,
+                      "characters": "-¥25.00",
+                      "fontSize": 14,
+                      "fontFamily": "monospace",
+                      "fills": [{"type": "SOLID", "color": "#ef4444"}]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ImageImportDialog",
+      "width": 800,
+      "height": 600,
+      "background": "#0f172a",
+      "children": [
+        {
+          "type": "FRAME",
+          "name": "Dialog",
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 600,
+          "fills": [{"type": "SOLID", "color": "#1e293b"}],
+          "cornerRadius": 12,
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "DialogTitle",
+              "x": 24,
+              "y": 24,
+              "width": 200,
+              "height": 24,
+              "characters": "从图片导入基金",
+              "fontSize": 18,
+              "fontWeight": "BOLD",
+              "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "CloseBtn",
+              "x": 750,
+              "y": 20,
+              "width": 30,
+              "height": 30,
+              "cornerRadius": 6,
+              "fills": [{"type": "SOLID", "color": "#334155"}],
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "CloseText",
+                  "x": 10,
+                  "y": 7,
+                  "width": 10,
+                  "height": 16,
+                  "characters": "X",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                }
+              ]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "UploadArea",
+              "x": 24,
+              "y": 70,
+              "width": 752,
+              "height": 200,
+              "cornerRadius": 12,
+              "fills": [{"type": "SOLID", "color": "#0f172a"}],
+              "stroke": {"type": "SOLID", "color": "#334155", "weight": 2, "dash": [8, 8]},
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "UploadHint1",
+                  "x": 0,
+                  "y": 70,
+                  "width": 752,
+                  "height": 24,
+                  "characters": "点击或拖拽上传图片",
+                  "fontSize": 18,
+                  "textAlign": "CENTER",
+                  "fills": [{"type": "SOLID", "color": "#94a3b8"}]
+                },
+                {
+                  "type": "TEXT",
+                  "name": "UploadHint2",
+                  "x": 0,
+                  "y": 110,
+                  "width": 752,
+                  "height": 16,
+                  "characters": "支持基金持仓截图，系统将自动识别基金代码和份额",
+                  "fontSize": 14,
+                  "textAlign": "CENTER",
+                  "fills": [{"type": "SOLID", "color": "#64748b"}]
+                }
+              ]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "CancelBtn",
+              "x": 580,
+              "y": 540,
+              "width": 90,
+              "height": 40,
+              "cornerRadius": 6,
+              "fills": [{"type": "SOLID", "color": "#334155"}],
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "CancelText",
+                  "x": 25,
+                  "y": 12,
+                  "width": 40,
+                  "height": 16,
+                  "characters": "取消",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#f1f5f9"}]
+                }
+              ]
+            },
+            {
+              "type": "RECTANGLE",
+              "name": "ImportBtn",
+              "x": 686,
+              "y": 540,
+              "width": 90,
+              "height": 40,
+              "cornerRadius": 6,
+              "fills": [{"type": "SOLID", "color": "#0ea5e9"}],
+              "children": [
+                {
+                  "type": "TEXT",
+                  "name": "ImportText",
+                  "x": 15,
+                  "y": 12,
+                  "width": 60,
+                  "height": 16,
+                  "characters": "导入(2)",
+                  "fontSize": 14,
+                  "fills": [{"type": "SOLID", "color": "#ffffff"}]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "pencil": {
+      "command": "C:/Users/wangjunyu/.trae-cn/extensions/highagency.pencildev-0.6.25-universal/out/mcp-server-windows-x64.exe",
+      "args": [
+        "--app",
+        "trae",
+        "--root",
+        "d:/mycode/fundAnalyser/designs"
+      ],
+      "env": {}
+    }
+  }
+}
