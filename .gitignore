@@ -45,3 +45,12 @@ dist/
 # 临时文件
 tmp/
 temp/
+
+# 历史备份目录
+history/
+
+# 测试脚本
+test_*.py
+
+# 其他不需要的文件
+fund_platform/
